@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, TextInput, View, Button, } from 'react-native';
+import { Text, TextInput, View, Button, Image, TouchableHighlight } from 'react-native';
 import { CheckBox } from 'native-base';
 import { observer } from "mobx-react"
 import { observable } from "mobx"
@@ -16,6 +16,7 @@ class TodoListItem extends Component {
     handleKeyDown = (e) => {
         if (e.nativeEvent.key == "Enter") {
             this.props.todo.descriptionUpdate(this.todo);
+            this.handleInputBox();
 
         }
         this.handleInputBox();
@@ -31,7 +32,7 @@ class TodoListItem extends Component {
 
                 onChangeText={this.handleChange}
                 value={this.todo}
-                onKeyPress={this.handleKeyDown} />
+                onSubmitEditing={this.handleKeyDown} />
 
         </View>
     }
@@ -43,12 +44,21 @@ class TodoListItem extends Component {
             {!this.isActive ? <Text style={{ textDecorationLine: 'line-through' }} onPress={this.handleInputBox}>{this.todo}</Text> : <Text onPress={this.handleInputBox} >{this.todo}</Text>}
         </View>
     }
+    onImageClick = () => {
+        this.props.todo.onRemoveTodo();
+    }
+
     renderDisplay = () => {
         console.log("todo desc in todo list item", this.props.todo.todoDescription)
         return <View>
             <CheckBox checked={this.isActive} onPress={this.updateIsCompleted} ></CheckBox>
             {this.isInputBox ? this.renderInputBox() : this.renderText()}
-        </View>
+            <TouchableHighlight onPress={this.onImageClick}>
+                <Image style={{ width: 25, height: 25 }} source={{ uri: 'https://facebook.github.io/react-native/img/tiny_logo.png' }} />
+            </TouchableHighlight>
+
+
+        </View >
 
     }
     render() {

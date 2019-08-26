@@ -4,6 +4,7 @@ import AddTodo from "../AddTodo/index"
 import TodoList from '../TodoList';
 
 import { observer } from 'mobx-react'
+import TodoFooter from '../../TodoFooter';
 @observer
 class TodoContainer extends Component {
 
@@ -17,6 +18,7 @@ class TodoContainer extends Component {
             <View>
                 <AddTodo onSubmitTodo={this.onSubmitTodo} />
                 <TodoList todoStore={this.props.todoStore} />
+                <TodoFooter />
             </View>
 
 
