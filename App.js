@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import TodoContainer from "./Src/components/TodoContainer/index"
 import { Text, TextInput, View, Button } from 'react-native';
+
+import TodoContainer from "./Src/components/TodoContainer/index"
+import { todoStore } from "./Src/Stores/index"
+import { observer } from "mobx-react"
+
+@observer
 class App extends Component {
     render() {
+        console.log("  app todostore", todoStore.todos)
         return (
             <View>
-                <TodoContainer />
-                <Text>"this is todo app"</Text>
-                {/* <TextInput
-                    style={{ height: 40 }}
-                    placeholder="enter todo"
-                    onChangeText={this.handleChange}
+                <TodoContainer todoStore={todoStore} />
 
-                /> */}
             </View>
         )
     }

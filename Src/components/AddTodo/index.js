@@ -7,12 +7,15 @@ import { observable } from "mobx"
 @observer
 class AddTodo extends Component {
     @observable todo
+
     submit = () => {
-        console.log("todo", this.todo)
-        // this.props.onSubmitTodo(this.todo)
+        console.log("todo are gow", this.todo)
+        this.props.onSubmitTodo(this.todo)
+        this.todo = "";
     }
-    handleChange = (e) => {
-        this.todo = e.target.value;
+    handleChange = (text) => {
+        this.todo = text;
+        console.log("todo", this.todo)
     }
     render() {
         return (
@@ -21,6 +24,7 @@ class AddTodo extends Component {
                     style={{ height: 40 }}
                     placeholder="enter todo"
                     onChangeText={this.handleChange}
+                    value={this.todo}
 
                 />
                 <Button onPress={this.submit}
