@@ -9,16 +9,20 @@ import TodoFooter from '../../TodoFooter';
 class TodoContainer extends Component {
 
     onSubmitTodo = (todoDescription) => {
-        console.log("in todoContainer,", todoDescription)
+        // console.log("in todoContainer,", todoDescription)
         this.props.todoStore.addTodo(todoDescription)
     }
+    onStateUpdate = (label) => {
+        this.props.todoStore.onTodoStateUpdate(label);
+    }
     render() {
-        console.log("in todocontainer todos on call back", this.props.todoStore.todos)
+        // console.log("in todocontainer todos on call back", this.props.todoStore.todos)
+        const todoList = this.props.todoStore.todoList;
         return (
             <View>
                 <AddTodo onSubmitTodo={this.onSubmitTodo} />
-                <TodoList todoStore={this.props.todoStore} />
-                <TodoFooter />
+                <TodoList todoList={todoList} />
+                <TodoFooter onStateUpdate={this.onStateUpdate} />
             </View>
 
 

@@ -8,7 +8,7 @@ import TodoListItem from "../TodoListItem/index.js"
 @observer
 class TodoList extends Component {
     renderDisplay = () => {
-        return this.props.todoStore.todos.map((object) => {
+        return this.props.todoList.map((object) => {
             console.log(" in todo list", object.todoDescription)
             return <TodoListItem key={object.id} todo={object}
             />
