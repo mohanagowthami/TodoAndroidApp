@@ -23,6 +23,7 @@ class TodoStore {
 
 
     @action onTodoStateUpdate = value => {
+        console.log(value, "in store")
         this.selectedTodoListType = value;
     };
 
@@ -41,6 +42,7 @@ class TodoStore {
             array = this.todos;
         }
         this.selectedTodoListLength = array.length;
+        console.log("in store list", array)
         return array;
     };
 

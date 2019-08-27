@@ -5,6 +5,7 @@ import TodoList from '../TodoList';
 
 import { observer } from 'mobx-react'
 import TodoFooter from '../../TodoFooter';
+
 @observer
 class TodoContainer extends Component {
 
@@ -13,16 +14,18 @@ class TodoContainer extends Component {
         this.props.todoStore.addTodo(todoDescription)
     }
     onStateUpdate = (label) => {
+        console.log(label, "label in todoFooter")
         this.props.todoStore.onTodoStateUpdate(label);
     }
     render() {
         // console.log("in todocontainer todos on call back", this.props.todoStore.todos)
         const todoList = this.props.todoStore.todoList;
+        console.log("in conatiner", todoList)
         return (
             <View>
                 <AddTodo onSubmitTodo={this.onSubmitTodo} />
                 <TodoList todoList={todoList} />
-                <TodoFooter onStateUpdate={this.onStateUpdate} />
+                <TodoFooter onStateUpdate={this.onStateUpdate} selectedTodoListType={this.props.todoStore.selectedTodoListType} />
             </View>
 
 

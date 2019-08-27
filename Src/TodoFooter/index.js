@@ -12,7 +12,7 @@ export default class TodoFooter extends Component {
         {
             key: 'games',
             icon: 'gamepad-variant',
-            label: 'All',
+            label: 'all',
             barColor: '#388E3C',
             pressColor: 'rgba(255, 255, 255, 0.16)',
             uri: require('./assets/list.png')
@@ -21,7 +21,7 @@ export default class TodoFooter extends Component {
         {
             key: 'movies-tv',
             icon: 'movie',
-            label: 'Active',
+            label: 'active',
             barColor: '#B71C1C',
             pressColor: 'rgba(255, 255, 255, 0.16)',
             uri: require('./assets/open_lock.png')
@@ -29,7 +29,7 @@ export default class TodoFooter extends Component {
         {
             key: 'music',
             icon: 'music-note',
-            label: 'Completed',
+            label: 'completed',
             barColor: '#E64A19',
             pressColor: 'rgba(255, 255, 255, 0.16)',
             uri: require('./assets/check_circle.png')
@@ -37,7 +37,7 @@ export default class TodoFooter extends Component {
     ]
     onStateUpdate = (label) => {
         console.log("label", label);
-        this.props.onStateUpdate(label)
+        this.props.onStateUpdate(label);
 
     }
 
@@ -45,7 +45,7 @@ export default class TodoFooter extends Component {
         // <Icon size={24} color="white" name={icon} />
         // <Image source={{ uri: uri }}
         //     style={{ width: 400, height: 400 }} />
-        <TouchableHighlight onPress={this.onStateUpdate(label)}>
+        <TouchableHighlight onPress={() => { this.onStateUpdate(label) }}>
             <Image source={uri} style={{ width: 20, height: 20 }} />
         </TouchableHighlight>
     )
