@@ -25,15 +25,17 @@ class TodoContainer extends Component {
         const todoList = this.props.todoStore.todoList;
         console.log("in conatiner", todoList)
         return (
-            <View style={{ flex: 1 }} >
-                <View >
+            <View  >
+                <View style={{ height: 120 }}>
 
                     <AddTodo onSubmitTodo={this.onSubmitTodo} />
+                </View>
+                <View style={{ flex: 1 }}>
 
 
                     <TodoList todoList={todoList} />
                 </View>
-                <View style={{ position: 'absolute', bottom: 0, left: 0 }}>
+                <View style={{ height: 80 }}>
 
                     <TodoFooter onStateUpdate={this.onStateUpdate} selectedTodoListType={this.props.todoStore.selectedTodoListType} />
                 </View>
