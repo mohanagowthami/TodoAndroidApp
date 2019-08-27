@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import { Text, TextInput, View, Button } from 'react-native';
+import { observer } from 'mobx-react'
+
+import TodoFooter from '../../TodoFooter';
+
 import AddTodo from "../AddTodo/index"
 import TodoList from '../TodoList';
 
-import { observer } from 'mobx-react'
-import TodoFooter from '../../TodoFooter';
+import styles from './style'
 
 @observer
 class TodoContainer extends Component {
@@ -22,11 +25,22 @@ class TodoContainer extends Component {
         const todoList = this.props.todoStore.todoList;
         console.log("in conatiner", todoList)
         return (
-            <View>
-                <AddTodo onSubmitTodo={this.onSubmitTodo} />
-                <TodoList todoList={todoList} />
-                <TodoFooter onStateUpdate={this.onStateUpdate} selectedTodoListType={this.props.todoStore.selectedTodoListType} />
+            <View style={{ flex: 1 }} >
+                <View >
+
+                    <AddTodo onSubmitTodo={this.onSubmitTodo} />
+
+
+                    <TodoList todoList={todoList} />
+                </View>
+                <View style={{ position: 'absolute', bottom: 0, left: 0 }}>
+
+                    <TodoFooter onStateUpdate={this.onStateUpdate} selectedTodoListType={this.props.todoStore.selectedTodoListType} />
+                </View>
             </View>
+
+
+
 
 
 

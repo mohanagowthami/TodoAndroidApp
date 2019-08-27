@@ -3,6 +3,7 @@ import BottomNavigation, {
 } from 'react-native-material-bottom-navigation'
 import React, { Component } from 'react';
 import { Text, TextInput, View, Button, Image, TouchableHighlight } from 'react-native';
+import styles from "./style"
 
 // import Ionicons from 'react-native-vector-icons/Ionicons';
 //import { Icon } from 'react-native-elements'
@@ -61,16 +62,14 @@ export default class TodoFooter extends Component {
 
     render() {
         return (
-            <View style={{ flex: 1 }}>
-                <View style={{ flex: 1 }}>
-                    {/* Your screen contents depending on current tab. */}
-                </View>
-                <BottomNavigation
-                    onTabPress={newTab => this.setState({ activeTab: newTab.key })}
-                    renderTab={this.renderTab}
-                    tabs={this.tabs}
-                />
-            </View>
+
+
+            <BottomNavigation
+                onTabPress={newTab => this.setState({ activeTab: newTab.key })}
+                renderTab={this.renderTab}
+                tabs={this.tabs}
+            />
+
         )
     }
 }

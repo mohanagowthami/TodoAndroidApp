@@ -10,7 +10,7 @@ class App extends Component {
     render() {
         console.log("  app todostore", todoStore.todos)
         return (
-            <View>
+            <View style={{ flex: 1 }}>
                 <TodoContainer todoStore={todoStore} />
 
             </View>

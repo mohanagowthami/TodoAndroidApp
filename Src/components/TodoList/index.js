@@ -5,6 +5,8 @@ import { observer } from "mobx-react"
 
 import TodoListItem from "../TodoListItem/index.js"
 
+import styles from './style'
+
 @observer
 class TodoList extends Component {
     renderDisplay = () => {
@@ -20,7 +22,7 @@ class TodoList extends Component {
 
     render() {
         return (
-            <View>
+            <View >
                 {this.renderDisplay()}
             </View>
 

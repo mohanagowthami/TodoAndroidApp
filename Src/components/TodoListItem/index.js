@@ -3,6 +3,9 @@ import { Text, TextInput, View, Button, Image, TouchableHighlight } from 'react-
 import { CheckBox } from 'native-base';
 import { observer } from "mobx-react"
 import { observable } from "mobx"
+
+
+import styles from './style'
 @observer
 class TodoListItem extends Component {
     @observable todo = this.props.todo.todoDescription;
@@ -50,12 +53,20 @@ class TodoListItem extends Component {
 
     renderDisplay = () => {
         console.log("todo desc in todo list item", this.props.todo.todoDescription)
-        return <View>
+        return <View style={styles.container}>
+
             <CheckBox checked={this.isActive} onPress={this.updateIsCompleted} ></CheckBox>
+
+
             {this.isInputBox ? this.renderInputBox() : this.renderText()}
+
+
             <TouchableHighlight onPress={this.onImageClick}>
-                <Image style={{ width: 25, height: 25 }} source={{ uri: 'https://www.google.com/imgres?imgurl=https%3A%2F%2Fimage.flaticon.com%2Ficons%2Fpng%2F512%2F60%2F60761.png&imgrefurl=https%3A%2F%2Fwww.freepik.com%2Ffree-icon%2Frubbish-bin-delete-button_779568.htm&docid=-G3TOX4REnhGPM&tbnid=FI7tiHVYKsOnnM%3A&vet=10ahUKEwieyPbT3KDkAhX48XMBHd7uAqQQMwhBKAMwAw..i&w=512&h=512&bih=981&biw=1853&q=delete%20button%20image%20bin&ved=0ahUKEwieyPbT3KDkAhX48XMBHd7uAqQQMwhBKAMwAw&iact=mrc&uact=8' }} />
+                <Image
+                    source={{ uri: 'https://image.flaticon.com/icons/png/512/60/60761.png' }}
+                    style={{ width: 25, height: 25 }} />
             </TouchableHighlight>
+
 
 
         </View >
@@ -63,7 +74,7 @@ class TodoListItem extends Component {
     }
     render() {
         return (
-            <View>
+            <View  >
                 {this.renderDisplay()}
             </View>
         )
