@@ -1,15 +1,14 @@
-import React, { StyleSheet } from 'react-native'
-import { row } from 'native-base';
+import React, { StyleSheet } from "react-native";
+import { row } from "native-base";
 
 export default StyleSheet.create({
-    container:
-    {
+  container: {
+    flex: 1,
+    maxHeight: 60,
+    marginTop: 10,
 
-        width: '100%',
-        flexDirection: 'row',
-        height: 50
-
-    }
-
-
+    flexDirection: "row",
+    borderBottomColor: "gray",
+    borderBottomWidth: 1
+  }
 });

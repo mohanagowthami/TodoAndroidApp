@@ -8,11 +8,13 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-native-community/checkbox": "^0.2.0",
     "mobx": "5.13.0",
     "mobx-react": "6.1.2",
     "native-base": "^2.13.5",
     "react": "16.8.6",
     "react-native": "0.60.4",
+    "react-native-check-box": "^2.1.7",
     "react-native-elements": "^1.1.0",
     "react-native-material-bottom-navigation": "^1.0.4",
     "react-native-vector-icons": "^6.6.0"
