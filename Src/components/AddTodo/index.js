@@ -1,32 +1,35 @@
 import React, { Component } from "react";
-import { Text, TextInput, View, Button } from "react-native";
+import { Button, Alert } from "react-native";
 import { observer } from "mobx-react";
 import { observable } from "mobx";
+import { AddTodoView, TodoTextInput } from "./style";
 
 @observer
 class AddTodo extends Component {
-  @observable todo;
-
+  @observable todo = "";
   submit = () => {
-    console.log("todo are gow", this.todo);
-    this.props.onSubmitTodo(this.todo);
-    this.todo = "";
+    if (this.todo.trim() !== "") {
+      this.props.onSubmitTodo(this.todo);
+      this.todo = "";
+    } else {
+      Alert.alert("enter todo", "please, make sure not to entry empty todo", [
+        { text: "OK", onPress: () => console.log("ok") }
+      ]);
+    }
   };
   handleChange = text => {
     this.todo = text;
-    console.log("todo", this.todo);
   };
   render() {
     return (
-      <View style={{ padding: 10 }}>
-        <TextInput
-          style={{ padding: 10, fontSize: 20 }}
+      <AddTodoView>
+        <TodoTextInput
           placeholder="enter todo"
           onChangeText={this.handleChange}
           value={this.todo}
         />
         <Button onPress={this.submit} title="submit" />
-      </View>
+      </AddTodoView>
     );
   }
 }

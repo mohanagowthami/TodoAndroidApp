@@ -2,19 +2,7 @@ import BottomNavigation, {
   FullTab
 } from "react-native-material-bottom-navigation";
 import React, { Component } from "react";
-import {
-  Text,
-  TextInput,
-  View,
-  Button,
-  Image,
-  TouchableHighlight,
-  TouchableWithoutFeedback
-} from "react-native";
-import styles from "./style";
-
-// import Ionicons from 'react-native-vector-icons/Ionicons';
-//import { Icon } from 'react-native-elements'
+import { Image, TouchableWithoutFeedback } from "react-native";
 
 export default class TodoFooter extends Component {
   tabs = [
@@ -44,14 +32,10 @@ export default class TodoFooter extends Component {
     }
   ];
   onStateUpdate = label => {
-    console.log("label", label);
     this.props.onStateUpdate(label);
   };
 
   renderIcon = (uri, label) => ({ isActive }) => (
-    // <Icon size={24} color="white" name={icon} />
-    // <Image source={{ uri: uri }}
-    //     style={{ width: 400, height: 400 }} />
     <TouchableWithoutFeedback
       onPress={() => {
         this.onStateUpdate(label);
