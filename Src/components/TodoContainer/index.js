@@ -1,13 +1,5 @@
 import React, { Component } from "react";
-import {
-  Text,
-  TextInput,
-  View,
-  Button,
-  TouchableHighlight,
-  Image,
-  ScrollView
-} from "react-native";
+import { TouchableHighlight, ScrollView } from "react-native";
 import { observable } from "mobx";
 import { observer } from "mobx-react";
 
@@ -54,7 +46,9 @@ class TodoContainer extends Component {
             </Header>
 
             <TodoListContainer>
-              <TodoList todoList={todoList} />
+              <ScrollView>
+                <TodoList todoList={todoList} />
+              </ScrollView>
             </TodoListContainer>
 
             <Plus>

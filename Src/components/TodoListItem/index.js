@@ -1,13 +1,5 @@
 import React, { Component } from "react";
-import {
-  Text,
-  TextInput,
-  View,
-  Image,
-  TouchableOpacity,
-  CheckBox,
-  Alert
-} from "react-native";
+import { View, TouchableOpacity, CheckBox, Alert } from "react-native";
 import { observer } from "mobx-react";
 import { observable } from "mobx";
 

@@ -1,20 +1,19 @@
-import React, { Component } from 'react';
-import { Text, TextInput, View, Button } from 'react-native';
+import React, { Component } from "react";
+import { Text, TextInput, View, Button } from "react-native";
 
-import TodoContainer from "./Src/components/TodoContainer/index"
-import { todoStore } from "./Src/Stores/index"
-import { observer } from "mobx-react"
+import TodoContainer from "./Src/components/TodoContainer/index";
+import { todoStore } from "./Src/Stores/index";
+import { observer } from "mobx-react";
 
 @observer
 class App extends Component {
-    render() {
-        console.log("  app todostore", todoStore.todos)
-        return (
-            <View style={{ flex: 1 }}>
-                <TodoContainer todoStore={todoStore} />
-
-            </View>
-        )
-    }
+  render() {
+    console.log("  app todostore", todoStore.todos);
+    return (
+      <View style={{ flex: 1 }}>
+        <TodoContainer todoStore={todoStore} />
+      </View>
+    );
+  }
 }
-export default App
+export default App;
