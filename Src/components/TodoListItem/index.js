@@ -15,7 +15,7 @@ import {
 } from "./style";
 @observer
 class TodoListItem extends Component {
-  @observable todo = this.props.todo.todoDescription;
+  @observable todo = this.props.todo.description;
   @observable isInputBox = false;
 
   updateIsCompleted = () => {
@@ -49,10 +49,10 @@ class TodoListItem extends Component {
   renderText = () => {
     return (
       <View>
-        {this.props.todo.isActive ? (
-          <NormalText onPress={this.handleInputBox}>{this.todo}</NormalText>
-        ) : (
+        {this.props.todo.completed ? (
           <StrikeText onPress={this.handleInputBox}>{this.todo}</StrikeText>
+        ) : (
+          <NormalText onPress={this.handleInputBox}>{this.todo}</NormalText>
         )}
       </View>
     );
@@ -77,7 +77,7 @@ class TodoListItem extends Component {
       <TodoListItemView>
         <CheckBoxView>
           <CheckBox
-            value={!this.props.todo.isActive}
+            value={this.props.todo.completed}
             onValueChange={this.updateIsCompleted}
           ></CheckBox>
         </CheckBoxView>

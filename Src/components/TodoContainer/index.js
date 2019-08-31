@@ -7,6 +7,8 @@ import TodoFooter from "../../TodoFooter";
 
 import AddTodo from "../AddTodo/index";
 import TodoList from "../TodoList";
+import FetchStatus from "../FetchStatus/index";
+import { Text } from "react-native";
 
 import {
   AddTodoContainer,
@@ -31,38 +33,61 @@ class TodoContainer extends Component {
   onImagePlusClick = () => {
     this.addTodoInputBox = !this.addTodoInputBox;
   };
+  componentDidMount() {
+    this.props.todoStore.fetchTodos();
+  }
   render() {
     const todoList = this.props.todoStore.todoList;
+    console.log("in todo container", this.props.todoStore.fetchTodosAPIStatus);
     return (
       <>
-        {this.addTodoInputBox ? (
-          <AddTodoContainer>
-            <AddTodo onSubmitTodo={this.onSubmitTodo} />
-          </AddTodoContainer>
+        {this.props.todoStore.fetchTodosAPIStatus === 200 ? (
+          <>
+            {this.addTodoInputBox ? (
+              <AddTodoContainer>
+                <AddTodo onSubmitTodo={this.onSubmitTodo} />
+              </AddTodoContainer>
+            ) : (
+              <>
+                <Header>
+                  <HeaderText>Header</HeaderText>
+                </Header>
+
+                <TodoListContainer>
+                  <ScrollView>
+                    <TodoList todoList={todoList} />
+                  </ScrollView>
+                </TodoListContainer>
+
+                <Plus>
+                  <TouchableHighlight onPress={this.onImagePlusClick}>
+                    <ImagePlus source={require("./assets/plus.png")} />
+                  </TouchableHighlight>
+                </Plus>
+
+                <TodoFooterContainer>
+                  <TodoFooter
+                    onStateUpdate={this.onStateUpdate}
+                    selectedTodoListType={
+                      this.props.todoStore.selectedTodoListType
+                    }
+                  />
+                </TodoFooterContainer>
+              </>
+            )}
+          </>
         ) : (
           <>
-            <Header>
-              <HeaderText>Header</HeaderText>
-            </Header>
+            {/* <FetchStatus
+              status={this.props.todoStore.fetchTodosAPIStatus}
+              error={this.props.todoStore.fetchTodosAPIError}
+            /> */}
 
-            <TodoListContainer>
-              <ScrollView>
-                <TodoList todoList={todoList} />
-              </ScrollView>
-            </TodoListContainer>
-
-            <Plus>
-              <TouchableHighlight onPress={this.onImagePlusClick}>
-                <ImagePlus source={require("./assets/plus.png")} />
-              </TouchableHighlight>
-            </Plus>
-
-            <TodoFooterContainer>
-              <TodoFooter
-                onStateUpdate={this.onStateUpdate}
-                selectedTodoListType={this.props.todoStore.selectedTodoListType}
-              />
-            </TodoFooterContainer>
+            {this.props.todoStore.fetchTodosAPIStatus === 100 ? (
+              <Text>loading</Text>
+            ) : (
+              <Text>{this.props.todoStore.fetchTodosAPIError}</Text>
+            )}
           </>
         )}
       </>
