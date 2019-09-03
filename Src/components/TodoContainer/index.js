@@ -78,16 +78,16 @@ class TodoContainer extends Component {
           </>
         ) : (
           <>
-            {/* <FetchStatus
+            <FetchStatus
               status={this.props.todoStore.fetchTodosAPIStatus}
               error={this.props.todoStore.fetchTodosAPIError}
-            /> */}
+            />
 
-            {this.props.todoStore.fetchTodosAPIStatus === 100 ? (
-              <Text>loading</Text>
+            {/* {this.props.todoStore.fetchTodosAPIStatus === 100 ? (
+            <>  <Text>loading</Text></>
             ) : (
-              <Text>{this.props.todoStore.fetchTodosAPIError}</Text>
-            )}
+            <>  <Text>{this.props.todoStore.fetchTodosAPIError}</Text>
+            )} */}
           </>
         )}
       </>

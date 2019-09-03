@@ -7,7 +7,7 @@ import { all, active, completed } from "../index";
 class TodoStore {
   @observable todos = [];
   @observable selectedTodoListType = all;
-  count = 0;
+  count = 10;
   @observable fetchTodosAPIError = "";
   @observable fetchTodosAPIStatus = 0;
 
@@ -71,16 +71,49 @@ class TodoStore {
   //   }
   // }
 
+  // fetchTodos() {
+  //   this.fetchTodosAPIStatus = 100;
+  //   fetch("https://api.myjson.com/bins/nhomr", {
+  //     method: "GET"
+  //   })
+  //     .then(response => {
+  //       response.json();
+  //       console.log(" response in son", response.json());
+  //       this.todos = response.json();
+  //       this.fetchTodosAPIStatus = 200;
+  //     })
+  //     // .then(responseJson => {
+  //     //   console.log(responseJson);
+  //     //   this.fetchTodosAPIStatus = 200;
+  //     //   this.todos = responseJson;
+  //     //   console.log(" todos are", this.todos);
+  //     //   return responseJson;
+  //     // })
+
+  //     .catch(error => {
+  //       console.log("errore", error);
+  //       this.fetchTodosAPIStatus = 400;
+  //       this.fetchTodosAPIError = " something went wrong";
+  //       console.log("gow", (this.fetchTodosAPIStatus = 400));
+  //       console.log(" fetchtodosApe error", this.fetchTodosAPIError);
+  //     });
+  // }
+
   fetchTodos() {
-    fetch("​https://jsonplaceholder.typicode.com/posts/1")
+    this.fetchTodosAPIStatus = 100;
+    fetch("https://api.myjson.com/bins/nhomr", {
+      method: "GET"
+    })
       .then(response => response.json())
       .then(responseJson => {
-        console.log(responseJson);
-        return responseJson;
+        console.log("response json", responseJson);
+        this.fetchTodosAPIStatus = 200;
+        this.todos = responseJson;
       })
-
       .catch(error => {
-        console.log("errore", error);
+        console.error(error);
+        this.fetchTodosAPIStatus = 400;
+        this.fetchTodosAPIError = " something went wrong";
       });
   }
 }

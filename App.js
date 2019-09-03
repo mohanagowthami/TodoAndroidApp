@@ -8,7 +8,7 @@ import { observer } from "mobx-react";
 @observer
 class App extends Component {
   render() {
-    console.log("  app todostore", todoStore.todos);
+    //console.log("  app todostore", todoStore.todos);
     return (
       <View style={{ flex: 1 }}>
         <TodoContainer todoStore={todoStore} />
